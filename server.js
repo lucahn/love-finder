@@ -74,6 +74,8 @@ app.post("/api/profiles", function(req, res) {
     for(y = 0; y < otherScores.length; y++) {
         if (otherScores[y] === minus) {
             console.log(profiles[y]);
+            var match = JSON.stringify(profiles[y]);
+            res.send(match);
         }
     };
 

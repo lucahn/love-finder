@@ -35,17 +35,18 @@
             ]};
         
             $.post("/api/profiles", newProfile)
-                .then(function() {
-                        
-                var modal = $("#myModal");
-                var span = $(".close")[0];
-        
+                .then(function(data) {
+                console.log(JSON.parse(match));
+                $("#theirName").text(match);
+                var modal = document.getElementById('ednaMode');
+                var span = document.getElementsByClassName("close")[0];
+
                 modal.style.display = "block";
 
                 span.onclick = function() {
                     modal.style.display = "none";
                 }
-        
+
                 window.onclick = function(event) {
                     if (event.target == modal) {
                         modal.style.display = "none";
@@ -59,6 +60,7 @@
 </head>
 
 <body>
+
 <container id="main">
 
     <h1>Tell Us About Yourself!</h1>
@@ -320,11 +322,13 @@
 
 </container>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
-    </div>
+<div id="ednaMode" class="modal">
+     <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="yourMatch"><h3 id="theirName"></h3>
+        <img id="theirFace?"/>
+        </div>
+    </div>    
 </div>
 
 </body>
