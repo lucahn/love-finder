@@ -15,6 +15,21 @@ var profiles = [
     name:"Ahmed",
     photo:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
     scores:[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
+    },
+    {
+    name: 'Dalhia',
+    photo: 'weeee.com',
+    scores: [ 1, 2, 3, 4, 5, 1, 2, 3, 4, 5 ]
+    },
+    {
+    name: 'Amelia',
+    photo: 'poop.com',
+    scores: [ 2, 5, 3, 4, 5, 4, 2, 3, 4, 5 ]
+    },
+    {
+    name: 'Farty Mc Fart',
+    photo: 'oadloaldoalo.com',
+    scores: [ 3, 2, 3, 4, 5, 1, 2, 1, 4, 2 ]
     }
 ];
 
@@ -32,12 +47,35 @@ app.get("/api/profiles", function(req, res) {
 
 app.post("/api/profiles", function(req, res) {
     var newProfile = req.body;
-
     for (i = 0; i < newProfile.scores.length; i++) {
         newProfile.scores[i] = parseInt(newProfile.scores[i]);
     };
     
-    console.log(newProfile);
+    var otherScores = [];
+    var difference = [];
+
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+    for(i = 0; i < profiles.length; i++) {
+        var this_one = profiles[i].scores;
+        difference = [];
+
+        for (x = 0; x < this_one.length; x++) {
+            var compared = Math.abs(this_one[x] - newProfile.scores[x]);
+            difference.push(compared);
+            var summed = difference.reduce(reducer);
+        };
+        otherScores.push(summed);
+        
+    };
+    
+    var minus = Math.min(...otherScores);
+        
+    for(y = 0; y < otherScores.length; y++) {
+        if (otherScores[y] === minus) {
+            console.log(profiles[y]);
+        }
+    };
 
     profiles.push(newProfile);
     res.json(newProfile);

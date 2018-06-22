@@ -12,6 +12,50 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        
+        $("#submit_btn").on("click", function(event) {
+            event.preventDefault();
+        
+            var newProfile = {
+            name: $("#your_name").val().trim(),
+            photo: $("#your_picture").val().trim(),
+            scores: [
+                $("input:radio[name='check1']:checked").val(),
+                $("input:radio[name='check2']:checked").val(),
+                $("input:radio[name='check3']:checked").val(),
+                $("input:radio[name='check4']:checked").val(),
+                $("input:radio[name='check5']:checked").val(),
+                $("input:radio[name='check6']:checked").val(),
+                $("input:radio[name='check7']:checked").val(),
+                $("input:radio[name='check8']:checked").val(),
+                $("input:radio[name='check9']:checked").val(),
+                $("input:radio[name='check10']:checked").val()
+            ]};
+        
+            $.post("/api/profiles", newProfile)
+                .then(function() {
+                        
+                var modal = $("#myModal");
+                var span = $(".close")[0];
+        
+                modal.style.display = "block";
+
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+        
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            });
+        });
+        
+        });
+    </script>
 </head>
 
 <body>
@@ -23,8 +67,6 @@
 <hr>
 <br>
 
-<form>
-    
     <h2>The Basics:</h2>
 <br>
     <div>
@@ -46,25 +88,20 @@
     <div>
         <h4>Question 1:</h4>
         <p>placeholder text</p>
-        <label for="q1_s1">1
+        <label>1
             <input id="q1_s1" class="qt_input" type="radio" name="check1" value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q1_s2">2
+        <label>2
             <input id="q1_s2" class="qt_input" type="radio" name="check1"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q1_s3">3
+        <label>3
             <input id="q1_s3" class="qt_input" type="radio" name="check1"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q1_s4">4
+        <label>4
             <input id="q1_s4" class="qt_input" type="radio" name="check1"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q1_s5">5
+        <label>5
             <input id="q1_s5" class="qt_input" type="radio" name="check1"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
     
@@ -73,25 +110,20 @@
     <div>
         <h4>Question 2:</h4>
         <p>placeholder text</p>
-        <label for="q2_s1">1
+        <label>1
             <input id="q2_s1" class="qt_input" type="radio" name="check2"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q2_s2">2
+        <label>2
             <input id="q2_s2" class="qt_input" type="radio" name="check2"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q2_s3">3
+        <label>3
             <input id="q2_s3" class="qt_input" type="radio" name="check2"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q2_s4">4
+        <label>4
             <input id="q2_s4" class="qt_input" type="radio" name="check2"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q2_s5">5
+        <label>5
             <input id="q2_s5" class="qt_input" type="radio" name="check2"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -100,25 +132,20 @@
     <div>
         <h4>Question 3:</h4>
         <p>placeholder text</p>
-        <label for="q3_s1">1
+        <label>1
             <input id="q3_s1" class="qt_input" type="radio" name="check3"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q3_s2">2
+        <label>2
             <input id="q3_s2" class="qt_input" type="radio" name="check3"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q3_s3">3
+        <label>3
             <input id="q3_s3" class="qt_input" type="radio" name="check3"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q3_s4">4
+        <label>4
             <input id="q3_s4" class="qt_input" type="radio" name="check3"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q3_s5">5
+        <label>5
             <input id="q3_s5" class="qt_input" type="radio" name="check3"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -127,25 +154,20 @@
     <div>
         <h4>Question 4:</h4>
         <p>placeholder text</p>
-        <label for="q4_s1">1
+        <label>1
             <input id="q4_s1" class="qt_input" type="radio" name="check4"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q4_s2">2
+        <label>2
             <input id="q4_s2" class="qt_input" type="radio" name="check4"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q4_s3">3
+        <label>3
             <input id="q4_s3" class="qt_input" type="radio" name="check4"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q4_s4">4
+        <label>4
             <input id="q4_s4" class="qt_input" type="radio" name="check4"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q4_s5">5
+        <label>5
             <input id="q4_s5" class="qt_input" type="radio" name="check4"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -154,25 +176,20 @@
     <div>
         <h4>Question 5:</h4>
         <p>placeholder text</p>
-        <label for="q5_s1">1
+        <label>1
             <input id="q5_s1" class="qt_input" type="radio" name="check5"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q5_s2">2
+        <label>2
             <input id="q5_s2" class="qt_input" type="radio" name="check5"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q5_s3">3
+        <label>3
             <input id="q5_s3" class="qt_input" type="radio" name="check5"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q5_s4">4
+        <label>4
             <input id="q5_s4" class="qt_input" type="radio" name="check5"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q5_s5">5
+        <label>5
             <input id="q5_s5" class="qt_input" type="radio" name="check5"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -181,25 +198,20 @@
     <div>
         <h4>Question 6:</h4>
         <p>placeholder text</p>
-        <label for="q6_s1">1
+        <label>1
             <input id="q6_s1" class="qt_input" type="radio" name="check6"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q6_s2">2
+        <label>2
             <input id="q6_s2" class="qt_input" type="radio" name="check6"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q6_s3">3
+        <label>3
             <input id="q6_s3" class="qt_input" type="radio" name="check6"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q6_s4">4
+        <label>4
             <input id="q6_s4" class="qt_input" type="radio" name="check6"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q6_s5">5
+        <label>5
             <input id="q6_s5" class="qt_input" type="radio" name="check6"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -208,25 +220,20 @@
     <div>
         <h4>Question 7:</h4>
         <p>placeholder text</p>
-        <label for="q7_s1">1
+        <label>1
             <input id="q7_s1" class="qt_input" type="radio" name="check7"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q7_s2">2
+        <label>2
             <input id="q7_s2" class="qt_input" type="radio" name="check7"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q7_s3">3
+        <label>3
             <input id="q7_s3" class="qt_input" type="radio" name="check7"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q7_s4">4
+        <label>4
             <input id="q7_s4" class="qt_input" type="radio" name="check7"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q7_s5">5
+        <label>5
             <input id="q7_s5" class="qt_input" type="radio" name="check7"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -235,25 +242,20 @@
     <div>
         <h4>Question 8:</h4>
         <p>placeholder text</p>
-        <label for="q8_s1">1
+        <label>1
             <input id="q8_s1" class="qt_input" type="radio" name="check8"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q8_s2">2
+        <label>2
             <input id="q8_s2" class="qt_input" type="radio" name="check8"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q8_s3">3
+        <label>3
             <input id="q8_s3" class="qt_input" type="radio" name="check8"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q8_s4">4
+        <label>4
             <input id="q8_s4" class="qt_input" type="radio" name="check8"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q8_s5">5
+        <label>5
             <input id="q8_s5" class="qt_input" type="radio" name="check8"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -262,25 +264,20 @@
     <div>
         <h4>Question 9:</h4>
         <p>placeholder text</p>
-        <label for="q9_s1">1
+        <label>1
             <input id="q9_s1" class="qt_input" type="radio" name="check9"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q9_s2">2
+        <label>2
             <input id="q9_s2" class="qt_input" type="radio" name="check9"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q9_s3">3
+        <label>3
             <input id="q9_s3" class="qt_input" type="radio" name="check9"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q9_s4">4
+        <label>4
             <input id="q9_s4" class="qt_input" type="radio" name="check9"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q9_s5">5
+        <label>5
             <input id="q9_s5" class="qt_input" type="radio" name="check9"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -289,25 +286,20 @@
     <div>
         <h4>Question 10:</h4>
         <p>placeholder text</p>
-        <label for="q10_s1">1
+        <label>1
             <input id="q10_s1" class="qt_input" type="radio" name="check10"  value="1">
-            <span class="checkbox"></span>
         </label>
-        <label for="q10_s2">2
+        <label>2
             <input id="q10_s2" class="qt_input" type="radio" name="check10"  value="2">
-            <span class="checkbox"></span>
         </label>
-        <label for="q10_s3">3
+        <label>3
             <input id="q10_s3" class="qt_input" type="radio" name="check10"  value="3">
-            <span class="checkbox"></span>
         </label>
-        <label for="q10_s4">4
+        <label>4
             <input id="q10_s4" class="qt_input" type="radio" name="check10"  value="4">
-            <span class="checkbox"></span>
         </label>
-        <label for="q10_s5">5
+        <label>5
             <input id="q10_s5" class="qt_input" type="radio" name="check10"  value="5">
-            <span class="checkbox"></span>
         </label>
     </div>
 
@@ -316,8 +308,6 @@
     <div>
         <input id="submit_btn" type="submit" value="Submit"></input>
     </div>
-
-</form>
 
 <br>
 <hr>
@@ -330,42 +320,12 @@
 
 </container>
 
-<script type="text/javascript">
-    $("#submit_btn").on("click", function(event) {
-      event.preventDefault();
-
-      var surveyResults = [];
-
-      var value1 = document.querySelector("input[name=check1]:checked").value;
-      var value2 = document.querySelector("input[name=check2]:checked").value;
-      var value3 = document.querySelector("input[name=check3]:checked").value;
-      var value4 = document.querySelector("input[name=check4]:checked").value;
-      var value5 = document.querySelector("input[name=check5]:checked").value;
-
-      var value6 = document.querySelector("input[name=check6]:checked").value;
-      var value7 = document.querySelector("input[name=check7]:checked").value;
-      var value8 = document.querySelector("input[name=check8]:checked").value;
-      var value9 = document.querySelector("input[name=check9]:checked").value;
-      var value10 = document.querySelector("input[name=check10]:checked").value;
-      
-      surveyResults.push(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10);
-      console.log(surveyResults);
-
-
-      var newProfile = {
-        name: $("#your_name").val().trim(),
-        photo: $("#your_picture").val().trim(),
-        scores: surveyResults,
-      };
-    //   console.log(newProfile);
-
-      $.post("/api/profiles", newProfile)
-        .then(function(data) {
-        //   console.log(data);
-          alert("Info added!");
-        });
-    });
-</script>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Some text in the Modal..</p>
+    </div>
+</div>
 
 </body>
 </html>
